@@ -28,7 +28,7 @@
                 bright: "#6F6BFF",
                 light: "#B3A9FF",
               },
-              celestial: "#F2F0FF",
+              celestial: "#d7daf3",
             },
             boxShadow: {
               cosmic: "0 0 0 1px rgba(111,107,255,0.3), 0 10px 40px rgba(111,107,255,0.2)",
@@ -83,7 +83,7 @@
       }
 
       .text-luminous {
-        color: #F2F0FF;
+        color: #d7daf3;
       }
 
       .accent-bright {
@@ -111,13 +111,13 @@
   <body class="text-luminous antialiased selection:bg-nebula-bright/30 selection:text-celestial">
     <header class="relative overflow-hidden">
       <div class="mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-6 lg:px-8 lg:pb-24 lg:pt-10">
-        <div class="mb-8 flex items-center justify-between rounded-2xl border border-cyan-300/20 bg-slate-900/40 px-4 py-3 text-sm text-cyan-100/90">
-          <p class="font-semibold tracking-wide">IFSP • Curso Presencial</p>
+        <div class="mb-8 flex items-center justify-between glass-cosmic rounded-2xl px-4 py-3 text-sm">
+          <p class="font-semibold tracking-wide text-nebula-light">IFSP • Curso Presencial</p>
           <a
             href="https://enquetes.ifsp.edu.br/189973?lang=pt-BR"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 rounded-full border border-cyan-300/30 px-3 py-1.5 font-semibold text-cyan-200 transition hover:border-cyan-200 hover:text-white"
+            class="inline-flex items-center gap-2 rounded-full border border-nebula-light/40 px-3 py-1.5 font-semibold text-nebula-light transition hover:text-celestial hover:border-nebula-bright/60"
             aria-label="Ir para inscrição oficial"
           >
             Inscrição Oficial
@@ -127,11 +127,6 @@
 
         <div class="grid items-center gap-10 lg:grid-cols-2">
           <section class="reveal">
-            <p class="mb-4 inline-flex items-center gap-2 rounded-full badge-nebula border px-3 py-1 text-xs font-bold uppercase tracking-[0.2em]">
-              <i data-lucide="sparkles" class="h-4 w-4"></i>
-              Alta Demanda • Seleção por Ordem de Inscrição
-            </p>
-
             <h1 class="text-balance text-4xl font-extrabold leading-tight text-celestial sm:text-5xl lg:text-6xl">
               Lógica de Programação e
               <span class="bg-gradient-to-r from-nebula-bright via-nebula-light to-nebula-bright bg-clip-text text-transparent">Construção de Algoritmos</span>
@@ -303,12 +298,24 @@
           </article>
           <article class="rounded-2xl border border-nebula-light/25 bg-cosmic-800/40 p-4">
             <p class="text-sm font-semibold uppercase tracking-wider text-nebula-light">Formato e local</p>
-            <p class="mt-2 text-lg font-bold text-celestial">Presencial no IFSP</p>
+            <p class="mt-2 text-lg font-bold text-celestial">Laboratório B116</p>
           </article>
           <article class="rounded-2xl border border-nebula-bright/50 bg-nebula-bright/10 p-4">
             <p class="text-sm font-semibold uppercase tracking-wider text-nebula-bright">Vagas</p>
             <p class="mt-2 text-lg font-extrabold text-nebula-bright">Apenas 30 vagas</p>
             <p class="text-sm text-nebula-light">Seleção por ordem de inscrição</p>
+          </article>
+          <article class="rounded-2xl border border-emerald-400/40 bg-emerald-400/10 p-4">
+            <p class="text-sm font-semibold uppercase tracking-wider text-emerald-300">Custo</p>
+            <p class="mt-2 text-lg font-extrabold text-emerald-300">Curso Gratuito</p>
+          </article>
+          <article class="rounded-2xl border border-nebula-light/25 bg-cosmic-800/40 p-4">
+            <p class="text-sm font-semibold uppercase tracking-wider text-nebula-light">Frequência</p>
+            <p class="mt-2 text-lg font-bold text-celestial">Presença Mínima 75%</p>
+          </article>
+          <article class="rounded-2xl border border-nebula-light/25 bg-cosmic-800/40 p-4">
+            <p class="text-sm font-semibold uppercase tracking-wider text-nebula-light">Avaliação</p>
+            <p class="mt-2 text-lg font-bold text-celestial">Sem Provas</p>
           </article>
         </div>
 
