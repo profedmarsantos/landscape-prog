@@ -18,20 +18,21 @@
               sans: ["Sora", "ui-sans-serif", "system-ui", "sans-serif"],
             },
             colors: {
-              brand: {
-                900: "#070b1f",
-                800: "#0c1538",
-                700: "#10214f",
+              cosmic: {
+                900: "#1B1833",
+                800: "#2D2652",
+                700: "#3F3D6B",
               },
-              accent: {
-                cyan: "#22d3ee",
-                green: "#34d399",
-                violet: "#8b5cf6",
+              nebula: {
+                dark: "#4A45B8",
+                bright: "#6F6BFF",
+                light: "#B3A9FF",
               },
+              celestial: "#F2F0FF",
             },
             boxShadow: {
-              glow: "0 0 0 1px rgba(34,211,238,0.25), 0 10px 30px rgba(34,211,238,0.25)",
-              pulse: "0 0 35px rgba(52,211,153,0.35)",
+              cosmic: "0 0 0 1px rgba(111,107,255,0.3), 0 10px 40px rgba(111,107,255,0.2)",
+              nebula: "0 0 50px rgba(111,107,255,0.35), inset 0 0 20px rgba(179,169,255,0.1)",
             },
           },
         },
@@ -49,15 +50,17 @@
     <style>
       body {
         background:
-          radial-gradient(circle at 10% -10%, rgba(139, 92, 246, 0.25), transparent 45%),
-          radial-gradient(circle at 90% 10%, rgba(34, 211, 238, 0.2), transparent 40%),
-          linear-gradient(160deg, #070b1f 0%, #0b1231 45%, #0d1e43 100%);
+          radial-gradient(circle at 20% -15%, rgba(111, 107, 255, 0.25), transparent 50%),
+          radial-gradient(circle at 80% 30%, rgba(74, 69, 184, 0.2), transparent 45%),
+          radial-gradient(circle at 50% 100%, rgba(179, 169, 255, 0.15), transparent 50%),
+          linear-gradient(160deg, #1B1833 0%, #2D2652 40%, #1B1833 100%);
+        background-attachment: fixed;
       }
 
       .reveal {
         opacity: 0;
         transform: translateY(24px);
-        transition: opacity 0.65s ease, transform 0.65s ease;
+        transition: opacity 0.75s ease, transform 0.75s ease;
       }
 
       .reveal.show {
@@ -65,13 +68,47 @@
         transform: translateY(0);
       }
 
-      .glass {
-        backdrop-filter: blur(12px);
-        background: linear-gradient(145deg, rgba(16, 33, 79, 0.65), rgba(7, 11, 31, 0.75));
+      .glass-cosmic {
+        backdrop-filter: blur(16px);
+        background: linear-gradient(
+          145deg,
+          rgba(79, 75, 184, 0.15),
+          rgba(27, 24, 51, 0.4)
+        );
+        border: 1px solid rgba(111, 107, 255, 0.25);
+      }
+
+      .glow-nebula {
+        box-shadow: 0 0 20px rgba(111, 107, 255, 0.4), inset 0 0 10px rgba(179, 169, 255, 0.1);
+      }
+
+      .text-luminous {
+        color: #F2F0FF;
+      }
+
+      .accent-bright {
+        color: #6F6BFF;
+      }
+
+      .badge-nebula {
+        background: rgba(179, 169, 255, 0.15);
+        border-color: rgba(179, 169, 255, 0.4);
+        color: #B3A9FF;
+      }
+
+      .cta-glow {
+        background: linear-gradient(135deg, #6F6BFF 0%, #4A45B8 100%);
+        box-shadow: 0 0 30px rgba(111, 107, 255, 0.5), inset 0 1px 0 rgba(179, 169, 255, 0.3);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .cta-glow:hover {
+        box-shadow: 0 0 50px rgba(111, 107, 255, 0.7), inset 0 1px 0 rgba(179, 169, 255, 0.5);
+        transform: translateY(-2px);
       }
     </style>
   </head>
-  <body class="text-slate-100 antialiased selection:bg-cyan-300/30 selection:text-cyan-100">
+  <body class="text-luminous antialiased selection:bg-nebula-bright/30 selection:text-celestial">
     <header class="relative overflow-hidden">
       <div class="mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-6 lg:px-8 lg:pb-24 lg:pt-10">
         <div class="mb-8 flex items-center justify-between rounded-2xl border border-cyan-300/20 bg-slate-900/40 px-4 py-3 text-sm text-cyan-100/90">
@@ -90,30 +127,30 @@
 
         <div class="grid items-center gap-10 lg:grid-cols-2">
           <section class="reveal">
-            <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-300/30 bg-emerald-400/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-emerald-200">
+            <p class="mb-4 inline-flex items-center gap-2 rounded-full badge-nebula border px-3 py-1 text-xs font-bold uppercase tracking-[0.2em]">
               <i data-lucide="sparkles" class="h-4 w-4"></i>
               Alta Demanda • Seleção por Ordem de Inscrição
             </p>
 
-            <h1 class="text-balance text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 class="text-balance text-4xl font-extrabold leading-tight text-celestial sm:text-5xl lg:text-6xl">
               Lógica de Programação e
-              <span class="bg-gradient-to-r from-cyan-300 via-cyan-100 to-emerald-200 bg-clip-text text-transparent">Construção de Algoritmos</span>
+              <span class="bg-gradient-to-r from-nebula-bright via-nebula-light to-nebula-bright bg-clip-text text-transparent">Construção de Algoritmos</span>
             </h1>
 
-            <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200/90 sm:text-xl">
-              Curso ideal para estudantes do ensino técnico e para quem quer elevar o raciocínio lógico com prática real de resolução de problemas.
+            <p class="mt-6 max-w-2xl text-lg leading-relaxed text-celestial/85 sm:text-xl">
+              Curso ideal para alunos do Ensino Médio, técnicos e quem deseja dominar a lógica de programação e resolver problemas reais. Aprenda a pensar como um programador desde o início!
             </p>
 
             <div class="mt-8 grid gap-3 sm:grid-cols-2">
-              <div class="glass rounded-2xl border border-cyan-300/20 p-4">
-                <p class="text-xs font-semibold uppercase tracking-wider text-cyan-200">Início previsto</p>
-                <p class="mt-1 text-lg font-bold">25/05/2026</p>
-                <p class="text-sm text-slate-300">Segundas-feiras, 14h00 às 18h00</p>
+              <div class="glass-cosmic rounded-2xl p-4">
+                <p class="text-xs font-semibold uppercase tracking-wider text-nebula-light">Início previsto</p>
+                <p class="mt-1 text-lg font-bold text-celestial">25/05/2026</p>
+                <p class="text-sm text-celestial/70">Segundas-feiras, 14h00 às 18h00</p>
               </div>
-              <div class="glass rounded-2xl border border-emerald-300/25 p-4">
-                <p class="text-xs font-semibold uppercase tracking-wider text-emerald-200">Vagas limitadas</p>
-                <p class="mt-1 text-lg font-extrabold text-emerald-100">Apenas 30 vagas</p>
-                <p class="text-sm text-slate-300">Garanta sua inscrição antes de esgotar</p>
+              <div class="glass-cosmic rounded-2xl p-4 border-nebula-bright/50">
+                <p class="text-xs font-semibold uppercase tracking-wider text-nebula-bright">Vagas limitadas</p>
+                <p class="mt-1 text-lg font-extrabold text-nebula-bright">Apenas 30 vagas</p>
+                <p class="text-sm text-nebula-light">Garanta sua inscrição antes de esgotar</p>
               </div>
             </div>
 
@@ -122,48 +159,48 @@
                 href="https://enquetes.ifsp.edu.br/189973?lang=pt-BR"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="group inline-flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-emerald-400 to-cyan-400 px-8 py-4 text-base font-extrabold text-slate-950 shadow-pulse transition duration-300 hover:scale-[1.02] hover:shadow-glow sm:w-auto sm:text-lg"
+                class="group cta-glow inline-flex w-full items-center justify-center gap-3 rounded-2xl px-8 py-4 text-base font-extrabold text-celestial sm:w-auto sm:text-lg"
                 aria-label="Garantir Minha Vaga no curso"
               >
                 Garantir Minha Vaga
                 <i data-lucide="rocket" class="h-5 w-5 transition group-hover:translate-x-0.5"></i>
               </a>
-              <p class="text-sm text-slate-300">
+              <p class="text-sm text-celestial/75">
                 Inscrições em ordem de chegada.
-                <span class="font-semibold text-cyan-200">Não deixe para depois.</span>
+                <span class="font-semibold text-nebula-bright">Não deixe para depois.</span>
               </p>
             </div>
           </section>
 
-          <aside class="reveal rounded-3xl border border-cyan-300/20 bg-slate-900/40 p-6 shadow-2xl shadow-cyan-900/30 lg:p-8">
-            <h2 class="text-xl font-bold text-white">Resumo rápido</h2>
+          <aside class="reveal glass-cosmic rounded-3xl p-6 shadow-2xl lg:p-8 glow-nebula">
+            <h2 class="text-xl font-bold text-celestial">Resumo rápido</h2>
             <dl class="mt-5 space-y-4">
               <div class="flex gap-3">
-                <i data-lucide="user-round" class="mt-0.5 h-5 w-5 text-cyan-300"></i>
+                <i data-lucide="user-round" class="mt-0.5 h-5 w-5 text-nebula-bright"></i>
                 <div>
-                  <dt class="text-sm font-semibold text-cyan-200">Docente</dt>
-                  <dd class="text-slate-100">Edmar Santos</dd>
+                  <dt class="text-sm font-semibold text-nebula-light">Docente</dt>
+                  <dd class="text-celestial">Edmar Santos</dd>
                 </div>
               </div>
               <div class="flex gap-3">
-                <i data-lucide="map-pin" class="mt-0.5 h-5 w-5 text-cyan-300"></i>
+                <i data-lucide="map-pin" class="mt-0.5 h-5 w-5 text-nebula-bright"></i>
                 <div>
-                  <dt class="text-sm font-semibold text-cyan-200">Local</dt>
-                  <dd class="text-slate-100">Presencial no IFSP (Instituto Federal de São Paulo)</dd>
+                  <dt class="text-sm font-semibold text-nebula-light">Local</dt>
+                  <dd class="text-celestial">Presencial no IFSP (Instituto Federal de São Paulo)</dd>
                 </div>
               </div>
               <div class="flex gap-3">
-                <i data-lucide="calendar-range" class="mt-0.5 h-5 w-5 text-cyan-300"></i>
+                <i data-lucide="calendar-range" class="mt-0.5 h-5 w-5 text-nebula-bright"></i>
                 <div>
-                  <dt class="text-sm font-semibold text-cyan-200">Encontros</dt>
-                  <dd class="text-slate-100">Sempre às segundas-feiras, das 14h00 às 18h00</dd>
+                  <dt class="text-sm font-semibold text-nebula-light">Encontros</dt>
+                  <dd class="text-celestial">Sempre às segundas-feiras, das 14h00 às 18h00</dd>
                 </div>
               </div>
               <div class="flex gap-3">
-                <i data-lucide="graduation-cap" class="mt-0.5 h-5 w-5 text-cyan-300"></i>
+                <i data-lucide="graduation-cap" class="mt-0.5 h-5 w-5 text-nebula-bright"></i>
                 <div>
-                  <dt class="text-sm font-semibold text-cyan-200">Perfil ideal</dt>
-                  <dd class="text-slate-100">Ensino Médio Técnico e interessados em aperfeiçoar pensamento lógico</dd>
+                  <dt class="text-sm font-semibold text-nebula-light">Perfil ideal</dt>
+                  <dd class="text-celestial">Ensino Médio Técnico e interessados em aperfeiçoar pensamento lógico</dd>
                 </div>
               </div>
             </dl>
@@ -173,105 +210,105 @@
     </header>
 
     <main class="mx-auto max-w-7xl space-y-16 px-4 pb-20 sm:px-6 lg:space-y-20 lg:px-8">
-      <section class="reveal rounded-3xl border border-cyan-300/15 bg-slate-900/35 p-6 lg:p-8" id="objetivos">
+      <section class="reveal glass-cosmic rounded-3xl p-6 lg:p-8 glow-nebula" id="objetivos">
         <div class="mb-8 flex items-center gap-3">
-          <i data-lucide="target" class="h-6 w-6 text-cyan-300"></i>
-          <h2 class="text-2xl font-extrabold text-white sm:text-3xl">O que você vai aprender</h2>
+          <i data-lucide="target" class="h-6 w-6 text-nebula-bright"></i>
+          <h2 class="text-2xl font-extrabold text-celestial sm:text-3xl">O que você vai aprender</h2>
         </div>
 
         <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-          <article class="rounded-2xl border border-cyan-300/15 bg-slate-800/45 p-4">
-            <i data-lucide="brain" class="h-5 w-5 text-cyan-300"></i>
-            <p class="mt-3 font-semibold">1. Desenvolver fundamentos de lógica de programação</p>
+          <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
+            <i data-lucide="brain" class="h-5 w-5 text-nebula-bright"></i>
+            <p class="mt-3 font-semibold text-celestial">1. Desenvolver fundamentos de lógica de programação</p>
           </article>
-          <article class="rounded-2xl border border-cyan-300/15 bg-slate-800/45 p-4">
-            <i data-lucide="search-code" class="h-5 w-5 text-cyan-300"></i>
-            <p class="mt-3 font-semibold">2. Construir algoritmos a partir da análise de problemas</p>
+          <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
+            <i data-lucide="search-code" class="h-5 w-5 text-nebula-bright"></i>
+            <p class="mt-3 font-semibold text-celestial">2. Construir algoritmos a partir da análise de problemas</p>
           </article>
-          <article class="rounded-2xl border border-cyan-300/15 bg-slate-800/45 p-4">
-            <i data-lucide="file-code-2" class="h-5 w-5 text-cyan-300"></i>
-            <p class="mt-3 font-semibold">3. Formalizar soluções em pseudocódigo estruturado</p>
+          <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
+            <i data-lucide="file-code-2" class="h-5 w-5 text-nebula-bright"></i>
+            <p class="mt-3 font-semibold text-celestial">3. Formalizar soluções em pseudocódigo estruturado</p>
           </article>
-          <article class="rounded-2xl border border-cyan-300/15 bg-slate-800/45 p-4">
-            <i data-lucide="variable" class="h-5 w-5 text-cyan-300"></i>
-            <p class="mt-3 font-semibold">4. Compreender variáveis, tipos de dados e operações</p>
+          <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
+            <i data-lucide="variable" class="h-5 w-5 text-nebula-bright"></i>
+            <p class="mt-3 font-semibold text-celestial">4. Compreender variáveis, tipos de dados e operações</p>
           </article>
-          <article class="rounded-2xl border border-cyan-300/15 bg-slate-800/45 p-4">
-            <i data-lucide="git-branch-plus" class="h-5 w-5 text-cyan-300"></i>
-            <p class="mt-3 font-semibold">5. Aplicar estruturas condicionais na tomada de decisão</p>
+          <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
+            <i data-lucide="git-branch-plus" class="h-5 w-5 text-nebula-bright"></i>
+            <p class="mt-3 font-semibold text-celestial">5. Aplicar estruturas condicionais na tomada de decisão</p>
           </article>
-          <article class="rounded-2xl border border-cyan-300/15 bg-slate-800/45 p-4">
-            <i data-lucide="repeat" class="h-5 w-5 text-cyan-300"></i>
-            <p class="mt-3 font-semibold">6. Utilizar estruturas de repetição adequadas conforme o problema</p>
+          <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
+            <i data-lucide="repeat" class="h-5 w-5 text-nebula-bright"></i>
+            <p class="mt-3 font-semibold text-celestial">6. Utilizar estruturas de repetição adequadas conforme o problema</p>
           </article>
-          <article class="rounded-2xl border border-cyan-300/15 bg-slate-800/45 p-4">
-            <i data-lucide="rows-3" class="h-5 w-5 text-cyan-300"></i>
-            <p class="mt-3 font-semibold">7. Trabalhar com vetores na organização de dados</p>
+          <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
+            <i data-lucide="rows-3" class="h-5 w-5 text-nebula-bright"></i>
+            <p class="mt-3 font-semibold text-celestial">7. Trabalhar com vetores na organização de dados</p>
           </article>
-          <article class="rounded-2xl border border-cyan-300/15 bg-slate-800/45 p-4">
-            <i data-lucide="clipboard-check" class="h-5 w-5 text-cyan-300"></i>
-            <p class="mt-3 font-semibold">8. Realizar análise de execução (teste de mesa)</p>
+          <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
+            <i data-lucide="clipboard-check" class="h-5 w-5 text-nebula-bright"></i>
+            <p class="mt-3 font-semibold text-celestial">8. Realizar análise de execução (teste de mesa)</p>
           </article>
-          <article class="rounded-2xl border border-cyan-300/15 bg-slate-800/45 p-4">
-            <i data-lucide="bug" class="h-5 w-5 text-cyan-300"></i>
-            <p class="mt-3 font-semibold">9. Identificar e corrigir inconsistências lógicas por meio de depuração</p>
+          <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
+            <i data-lucide="bug" class="h-5 w-5 text-nebula-bright"></i>
+            <p class="mt-3 font-semibold text-celestial">9. Identificar e corrigir inconsistências lógicas por meio de depuração</p>
           </article>
-          <article class="rounded-2xl border border-cyan-300/15 bg-slate-800/45 p-4">
-            <i data-lucide="workflow" class="h-5 w-5 text-cyan-300"></i>
-            <p class="mt-3 font-semibold">10. Representar algoritmos por meio de fluxogramas</p>
+          <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
+            <i data-lucide="workflow" class="h-5 w-5 text-nebula-bright"></i>
+            <p class="mt-3 font-semibold text-celestial">10. Representar algoritmos por meio de fluxogramas</p>
           </article>
-          <article class="rounded-2xl border border-cyan-300/15 bg-slate-800/45 p-4 sm:col-span-2 xl:col-span-1">
-            <i data-lucide="puzzle" class="h-5 w-5 text-cyan-300"></i>
-            <p class="mt-3 font-semibold">11. Aplicar modularização por meio de funções</p>
+          <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30 sm:col-span-2 xl:col-span-1">
+            <i data-lucide="puzzle" class="h-5 w-5 text-nebula-bright"></i>
+            <p class="mt-3 font-semibold text-celestial">11. Aplicar modularização por meio de funções</p>
           </article>
         </div>
       </section>
 
       <section class="reveal grid gap-6 lg:grid-cols-2" id="publico">
-        <article class="rounded-3xl border border-emerald-300/20 bg-emerald-400/10 p-6 lg:p-8">
-          <div class="mb-4 inline-flex items-center gap-2 rounded-full bg-emerald-400/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-emerald-100">
+        <article class="glass-cosmic rounded-3xl p-6 lg:p-8 border-nebula-light/40 glow-nebula">
+          <div class="mb-4 inline-flex items-center gap-2 rounded-full bg-nebula-bright/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-nebula-light">
             <i data-lucide="users" class="h-4 w-4"></i>
             Para Quem é o Curso
           </div>
-          <p class="text-lg leading-relaxed text-slate-100">
-            Voltado para <strong>estudantes do Ensino Médio Técnico</strong> e demais interessados no aperfeiçoamento e desenvolvimento do pensamento lógico aplicado à construção de algoritmos.
+          <p class="text-lg leading-relaxed text-celestial">
+            Se você está no <strong>Ensino Médio, técnico ou no início da graduação</strong> e quer dominar a lógica de programação antes de mergulhar em linguagens de código, este é o seu curso. Perfeito para quem deseja construir bases sólidas de raciocínio lógico e algoritmo.
           </p>
         </article>
 
-        <article class="rounded-3xl border border-cyan-300/20 bg-slate-900/40 p-6 lg:p-8">
-          <div class="mb-4 inline-flex items-center gap-2 rounded-full bg-cyan-400/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-cyan-100">
+        <article class="glass-cosmic rounded-3xl p-6 lg:p-8 border-nebula-bright/40">
+          <div class="mb-4 inline-flex items-center gap-2 rounded-full bg-nebula-bright/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-nebula-light">
             <i data-lucide="shield-check" class="h-4 w-4"></i>
             Pré-requisitos
           </div>
-          <p class="text-lg leading-relaxed text-slate-100">
-            Conhecimentos básicos de informática e Ensino Médio concluído ou cursando.
+          <p class="text-lg leading-relaxed text-celestial">
+            <strong>Nenhuma experiência em programação necessária!</strong> Apenas conhecimentos básicos de informática e Ensino Médio concluído ou cursando. Quanto menos você sabe de programação, mais ganhará com este curso.
           </p>
         </article>
       </section>
 
-      <section class="reveal rounded-3xl border border-violet-300/25 bg-violet-500/10 p-6 lg:p-8" id="cronograma">
+      <section class="reveal glass-cosmic rounded-3xl p-6 lg:p-8 glow-nebula" id="cronograma">
         <div class="mb-6 flex items-center gap-3">
-          <i data-lucide="calendar-clock" class="h-6 w-6 text-violet-200"></i>
-          <h2 class="text-2xl font-extrabold text-white sm:text-3xl">Informações Importantes</h2>
+          <i data-lucide="calendar-clock" class="h-6 w-6 text-nebula-bright"></i>
+          <h2 class="text-2xl font-extrabold text-celestial sm:text-3xl">Informações Importantes</h2>
         </div>
 
         <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          <article class="rounded-2xl border border-violet-200/20 bg-slate-900/35 p-4">
-            <p class="text-sm font-semibold uppercase tracking-wider text-violet-100">Início previsto</p>
-            <p class="mt-2 text-lg font-bold text-white">25/05/2026</p>
+          <article class="rounded-2xl border border-nebula-light/25 bg-cosmic-800/40 p-4">
+            <p class="text-sm font-semibold uppercase tracking-wider text-nebula-light">Início previsto</p>
+            <p class="mt-2 text-lg font-bold text-celestial">25/05/2026</p>
           </article>
-          <article class="rounded-2xl border border-violet-200/20 bg-slate-900/35 p-4">
-            <p class="text-sm font-semibold uppercase tracking-wider text-violet-100">Dia e horário</p>
-            <p class="mt-2 text-lg font-bold text-white">Segundas, 14h00 às 18h00</p>
+          <article class="rounded-2xl border border-nebula-light/25 bg-cosmic-800/40 p-4">
+            <p class="text-sm font-semibold uppercase tracking-wider text-nebula-light">Dia e horário</p>
+            <p class="mt-2 text-lg font-bold text-celestial">Segundas, 14h00 às 18h00</p>
           </article>
-          <article class="rounded-2xl border border-violet-200/20 bg-slate-900/35 p-4">
-            <p class="text-sm font-semibold uppercase tracking-wider text-violet-100">Formato e local</p>
-            <p class="mt-2 text-lg font-bold text-white">Presencial no IFSP</p>
+          <article class="rounded-2xl border border-nebula-light/25 bg-cosmic-800/40 p-4">
+            <p class="text-sm font-semibold uppercase tracking-wider text-nebula-light">Formato e local</p>
+            <p class="mt-2 text-lg font-bold text-celestial">Presencial no IFSP</p>
           </article>
-          <article class="rounded-2xl border border-emerald-300/30 bg-emerald-400/10 p-4">
-            <p class="text-sm font-semibold uppercase tracking-wider text-emerald-100">Vagas</p>
-            <p class="mt-2 text-lg font-extrabold text-white">Apenas 30 vagas</p>
-            <p class="text-sm text-emerald-100">Seleção por ordem de inscrição</p>
+          <article class="rounded-2xl border border-nebula-bright/50 bg-nebula-bright/10 p-4">
+            <p class="text-sm font-semibold uppercase tracking-wider text-nebula-bright">Vagas</p>
+            <p class="mt-2 text-lg font-extrabold text-nebula-bright">Apenas 30 vagas</p>
+            <p class="text-sm text-nebula-light">Seleção por ordem de inscrição</p>
           </article>
         </div>
 
@@ -280,7 +317,7 @@
             href="https://enquetes.ifsp.edu.br/189973?lang=pt-BR"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 rounded-xl border border-cyan-300/40 bg-cyan-300/10 px-5 py-3 font-bold text-cyan-100 transition hover:bg-cyan-300/20"
+            class="inline-flex items-center gap-2 rounded-xl border border-nebula-bright/60 bg-nebula-bright/15 px-5 py-3 font-bold text-nebula-bright transition hover:bg-nebula-bright/25 hover:border-nebula-bright"
           >
             Quero me inscrever agora
             <i data-lucide="arrow-right" class="h-5 w-5"></i>
@@ -289,14 +326,14 @@
       </section>
     </main>
 
-    <footer class="border-t border-cyan-300/20 bg-slate-950/40">
-      <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 text-sm text-slate-300 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+    <footer class="border-t border-nebula-bright/20 bg-cosmic-900/60">
+      <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 text-sm text-celestial/75 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
         <p>© 2026 Curso Lógica de Programação e Construção de Algoritmos • IFSP</p>
         <a
           href="https://enquetes.ifsp.edu.br/189973?lang=pt-BR"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 font-semibold text-cyan-200 transition hover:text-cyan-100"
+          class="inline-flex items-center gap-2 font-semibold text-nebula-light transition hover:text-nebula-bright"
         >
           Link de inscrição
           <i data-lucide="external-link" class="h-4 w-4"></i>
