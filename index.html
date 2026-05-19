@@ -1,373 +1,380 @@
 <!doctype html>
 <html lang="pt-BR" class="scroll-smooth">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lógica de Programação e Construção de Algoritmos | IFSP</title>
-    <meta
-      name="description"
-      content="Curso presencial no IFSP com Edmar Santos para desenvolver pensamento lógico e construção de algoritmos. Vagas limitadas: 30." 
-    />
+    <meta name="description"
+        content="Curso presencial no IFSP com Edmar Santos para desenvolver pensamento lógico e construção de algoritmos. Vagas limitadas: 30." />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ["Sora", "ui-sans-serif", "system-ui", "sans-serif"],
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ["Sora", "ui-sans-serif", "system-ui", "sans-serif"],
+                    },
+                    colors: {
+                        cosmic: {
+                            900: "#1B1833",
+                            800: "#2D2652",
+                            700: "#3F3D6B",
+                        },
+                        nebula: {
+                            dark: "#4A45B8",
+                            bright: "#6F6BFF",
+                            light: "#B3A9FF",
+                        },
+                        celestial: "#d7daf3",
+                    },
+                    boxShadow: {
+                        cosmic: "0 0 0 1px rgba(111,107,255,0.3), 0 10px 40px rgba(111,107,255,0.2)",
+                        nebula: "0 0 50px rgba(111,107,255,0.35), inset 0 0 20px rgba(179,169,255,0.1)",
+                    },
+                },
             },
-            colors: {
-              cosmic: {
-                900: "#1B1833",
-                800: "#2D2652",
-                700: "#3F3D6B",
-              },
-              nebula: {
-                dark: "#4A45B8",
-                bright: "#6F6BFF",
-                light: "#B3A9FF",
-              },
-              celestial: "#d7daf3",
-            },
-            boxShadow: {
-              cosmic: "0 0 0 1px rgba(111,107,255,0.3), 0 10px 40px rgba(111,107,255,0.2)",
-              nebula: "0 0 50px rgba(111,107,255,0.35), inset 0 0 20px rgba(179,169,255,0.1)",
-            },
-          },
-        },
-      };
+        };
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-      body {
-        background:
-          radial-gradient(circle at 20% -15%, rgba(111, 107, 255, 0.25), transparent 50%),
-          radial-gradient(circle at 80% 30%, rgba(74, 69, 184, 0.2), transparent 45%),
-          radial-gradient(circle at 50% 100%, rgba(179, 169, 255, 0.15), transparent 50%),
-          linear-gradient(160deg, #1B1833 0%, #2D2652 40%, #1B1833 100%);
-        background-attachment: fixed;
-      }
+        body {
+            background:
+                radial-gradient(circle at 20% -15%, rgba(111, 107, 255, 0.25), transparent 50%),
+                radial-gradient(circle at 80% 30%, rgba(74, 69, 184, 0.2), transparent 45%),
+                radial-gradient(circle at 50% 100%, rgba(179, 169, 255, 0.15), transparent 50%),
+                linear-gradient(160deg, #1B1833 0%, #2D2652 40%, #1B1833 100%);
+            background-attachment: fixed;
+        }
 
-      .reveal {
-        opacity: 0;
-        transform: translateY(24px);
-        transition: opacity 0.75s ease, transform 0.75s ease;
-      }
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.75s ease, transform 0.75s ease;
+        }
 
-      .reveal.show {
-        opacity: 1;
-        transform: translateY(0);
-      }
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-      .glass-cosmic {
-        backdrop-filter: blur(16px);
-        background: linear-gradient(
-          145deg,
-          rgba(79, 75, 184, 0.15),
-          rgba(27, 24, 51, 0.4)
-        );
-        border: 1px solid rgba(111, 107, 255, 0.25);
-      }
+        .glass-cosmic {
+            backdrop-filter: blur(16px);
+            background: linear-gradient(145deg,
+                    rgba(79, 75, 184, 0.15),
+                    rgba(27, 24, 51, 0.4));
+            border: 1px solid rgba(111, 107, 255, 0.25);
+        }
 
-      .glow-nebula {
-        box-shadow: 0 0 20px rgba(111, 107, 255, 0.4), inset 0 0 10px rgba(179, 169, 255, 0.1);
-      }
+        .glow-nebula {
+            box-shadow: 0 0 20px rgba(111, 107, 255, 0.4), inset 0 0 10px rgba(179, 169, 255, 0.1);
+        }
 
-      .text-luminous {
-        color: #d7daf3;
-      }
+        .text-luminous {
+            color: #d7daf3;
+        }
 
-      .accent-bright {
-        color: #6F6BFF;
-      }
+        .accent-bright {
+            color: #6F6BFF;
+        }
 
-      .badge-nebula {
-        background: rgba(179, 169, 255, 0.15);
-        border-color: rgba(179, 169, 255, 0.4);
-        color: #B3A9FF;
-      }
+        .badge-nebula {
+            background: rgba(179, 169, 255, 0.15);
+            border-color: rgba(179, 169, 255, 0.4);
+            color: #B3A9FF;
+        }
 
-      .cta-glow {
-        background: linear-gradient(135deg, #6F6BFF 0%, #4A45B8 100%);
-        box-shadow: 0 0 30px rgba(111, 107, 255, 0.5), inset 0 1px 0 rgba(179, 169, 255, 0.3);
-        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      }
+        .cta-glow {
+            background: linear-gradient(135deg, #6F6BFF 0%, #4A45B8 100%);
+            box-shadow: 0 0 30px rgba(111, 107, 255, 0.5), inset 0 1px 0 rgba(179, 169, 255, 0.3);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
 
-      .cta-glow:hover {
-        box-shadow: 0 0 50px rgba(111, 107, 255, 0.7), inset 0 1px 0 rgba(179, 169, 255, 0.5);
-        transform: translateY(-2px);
-      }
+        .cta-glow:hover {
+            box-shadow: 0 0 50px rgba(111, 107, 255, 0.7), inset 0 1px 0 rgba(179, 169, 255, 0.5);
+            transform: translateY(-2px);
+        }
     </style>
-  </head>
-  <body class="text-luminous antialiased selection:bg-nebula-bright/30 selection:text-celestial">
+</head>
+
+<body class="text-luminous antialiased selection:bg-nebula-bright/30 selection:text-celestial">
     <header class="relative overflow-hidden">
-      <div class="mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-6 lg:px-8 lg:pb-24 lg:pt-10">
-        <div class="mb-8 flex items-center justify-between glass-cosmic rounded-2xl px-4 py-3 text-sm">
-          <p class="font-semibold tracking-wide text-nebula-light">IFSP • Curso Presencial</p>
-          <a
-            href="https://enquetes.ifsp.edu.br/189973?lang=pt-BR"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 rounded-full border border-nebula-light/40 px-3 py-1.5 font-semibold text-nebula-light transition hover:text-celestial hover:border-nebula-bright/60"
-            aria-label="Ir para inscrição oficial"
-          >
-            Inscrição Oficial
-            <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
-          </a>
-        </div>
-
-        <div class="grid items-center gap-10 lg:grid-cols-2">
-          <section class="reveal">
-            <h1 class="text-balance text-4xl font-extrabold leading-tight text-celestial sm:text-5xl lg:text-6xl">
-              Lógica de Programação e
-              <span class="bg-gradient-to-r from-nebula-bright via-nebula-light to-nebula-bright bg-clip-text text-transparent">Construção de Algoritmos</span>
-            </h1>
-
-            <p class="mt-6 max-w-2xl text-lg leading-relaxed text-celestial/85 sm:text-xl">
-              Curso ideal para alunos do Ensino Médio, técnicos e quem deseja dominar a lógica de programação e resolver problemas reais. Aprenda a pensar como um programador desde o início!
-            </p>
-
-            <div class="mt-8 grid gap-3 sm:grid-cols-2">
-              <div class="glass-cosmic rounded-2xl p-4">
-                <p class="text-xs font-semibold uppercase tracking-wider text-nebula-light">Início previsto</p>
-                <p class="mt-1 text-lg font-bold text-celestial">25/05/2026</p>
-                <p class="text-sm text-celestial/70">Segundas-feiras, 14h00 às 18h00</p>
-              </div>
-              <div class="glass-cosmic rounded-2xl p-4 border-nebula-bright/50">
-                <p class="text-xs font-semibold uppercase tracking-wider text-nebula-bright">Vagas limitadas</p>
-                <p class="mt-1 text-lg font-extrabold text-nebula-bright">Apenas 30 vagas</p>
-                <p class="text-sm text-nebula-light">Garanta sua inscrição antes de esgotar</p>
-              </div>
+        <div class="mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-6 lg:px-8 lg:pb-24 lg:pt-10">
+            <div class="mb-8 flex items-center justify-between glass-cosmic rounded-2xl px-4 py-3 text-sm">
+                <p class="font-semibold tracking-wide text-nebula-light">IFSP • Curso Presencial</p>
+                <a href="https://enquetes.ifsp.edu.br/189973?lang=pt-BR" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 rounded-full border border-nebula-light/40 px-3 py-1.5 font-semibold text-nebula-light transition hover:text-celestial hover:border-nebula-bright/60"
+                    aria-label="Ir para inscrição oficial">
+                    Inscrição Oficial
+                    <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+                </a>
             </div>
 
-            <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <a
-                href="https://enquetes.ifsp.edu.br/189973?lang=pt-BR"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group cta-glow inline-flex w-full items-center justify-center gap-3 rounded-2xl px-8 py-4 text-base font-extrabold text-celestial sm:w-auto sm:text-lg"
-                aria-label="Garantir Minha Vaga no curso"
-              >
-                Garantir Minha Vaga
-                <i data-lucide="rocket" class="h-5 w-5 transition group-hover:translate-x-0.5"></i>
-              </a>
-              <p class="text-sm text-celestial/75">
-                Inscrições em ordem de chegada.
-                <span class="font-semibold text-nebula-bright">Não deixe para depois.</span>
-              </p>
-            </div>
-          </section>
 
-          <aside class="reveal glass-cosmic rounded-3xl p-6 shadow-2xl lg:p-8 glow-nebula">
-            <h2 class="text-xl font-bold text-celestial">Resumo rápido</h2>
-            <dl class="mt-5 space-y-4">
-              <div class="flex gap-3">
-                <i data-lucide="user-round" class="mt-0.5 h-5 w-5 text-nebula-bright"></i>
-                <div>
-                  <dt class="text-sm font-semibold text-nebula-light">Docente</dt>
-                  <dd class="text-celestial">Edmar Santos</dd>
-                </div>
-              </div>
-              <div class="flex gap-3">
-                <i data-lucide="map-pin" class="mt-0.5 h-5 w-5 text-nebula-bright"></i>
-                <div>
-                  <dt class="text-sm font-semibold text-nebula-light">Local</dt>
-                  <dd class="text-celestial">Presencial no IFSP (Instituto Federal de São Paulo)</dd>
-                </div>
-              </div>
-              <div class="flex gap-3">
-                <i data-lucide="calendar-range" class="mt-0.5 h-5 w-5 text-nebula-bright"></i>
-                <div>
-                  <dt class="text-sm font-semibold text-nebula-light">Encontros</dt>
-                  <dd class="text-celestial">Sempre às segundas-feiras, das 14h00 às 18h00</dd>
-                </div>
-              </div>
-              <div class="flex gap-3">
-                <i data-lucide="graduation-cap" class="mt-0.5 h-5 w-5 text-nebula-bright"></i>
-                <div>
-                  <dt class="text-sm font-semibold text-nebula-light">Perfil ideal</dt>
-                  <dd class="text-celestial">Ensino Médio Técnico e interessados em aperfeiçoar pensamento lógico</dd>
-                </div>
-              </div>
-            </dl>
-          </aside>
+
+            <div class="grid items-center gap-10 lg:grid-cols-2">
+                <section class="reveal">
+                    <h1
+                        class="text-balance text-4xl font-extrabold leading-tight text-celestial sm:text-5xl lg:text-6xl">
+                        Lógica de Programação e
+                        <span
+                            class="bg-gradient-to-r from-nebula-bright via-nebula-light to-nebula-bright bg-clip-text text-transparent">Construção
+                            de Algoritmos</span>
+                    </h1>
+
+                    <p class="mt-6 max-w-2xl text-lg leading-relaxed text-celestial/85 sm:text-xl">
+                        Já está estudando programação? Quer aperfeiçoar seus conhecimentos? Este é o curso ideal para alunos do Ensino Médio, técnicos e quem deseja dominar a lógica de programação
+                        e resolver problemas reais!
+                    </p>
+
+                    <div class="mt-8 grid gap-3 sm:grid-cols-2">
+                        <div class="glass-cosmic rounded-2xl p-4">
+                            <p class="text-xs font-semibold uppercase tracking-wider text-nebula-light">Início previsto
+                            </p>
+                            <p class="mt-1 text-lg font-bold text-celestial">25/05/2026</p>
+                            <p class="text-sm text-celestial/70">Segundas-feiras, 14h00 às 18h00</p>
+                        </div>
+                        <div class="glass-cosmic rounded-2xl p-4 border-nebula-bright/50">
+                            <p class="text-xs font-semibold uppercase tracking-wider text-nebula-bright">Vagas limitadas
+                            </p>
+                            <p class="mt-1 text-lg font-extrabold text-nebula-bright">Apenas 30 vagas</p>
+                            <p class="text-sm text-nebula-light">Garanta sua inscrição antes de esgotar</p>
+                        </div>
+                    </div>
+
+
+                </section>
+
+                <aside class="reveal glass-cosmic rounded-3xl p-6 shadow-2xl lg:p-8 glow-nebula">
+                    <h2 class="text-xl font-bold text-celestial">Resumo rápido</h2>
+                    <dl class="mt-5 space-y-4">
+                        <div class="flex gap-3">
+                            <i data-lucide="user-round" class="mt-0.5 h-5 w-5 text-nebula-bright"></i>
+                            <div>
+                                <dt class="text-sm font-semibold text-nebula-light">Docente</dt>
+                                <dd class="text-celestial">Prof. Dr. Edmar Santos</dd>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <i data-lucide="map-pin" class="mt-0.5 h-5 w-5 text-nebula-bright"></i>
+                            <div>
+                                <dt class="text-sm font-semibold text-nebula-light">Local</dt>
+                                <dd class="text-celestial">IFSP SJP (Instituto Federal de São Paulo)</dd>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <i data-lucide="map-pin" class="mt-0.5 h-5 w-5 text-nebula-bright"></i>
+                            <div>
+                                <dt class="text-sm font-semibold text-nebula-light">Sala</dt>
+                                <dd class="text-celestial">B116 - Laboratório de Informática 03 - Bloco B</dd>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <i data-lucide="calendar-range" class="mt-0.5 h-5 w-5 text-nebula-bright"></i>
+                            <div>
+                                <dt class="text-sm font-semibold text-nebula-light">Apenas 8 Encontros</dt>
+                                <dd class="text-celestial"><b>Será presencial</b> sempre às segundas-feiras, das 14h00 às 18h00 com no mínimo 75% de presença</dd>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <i data-lucide="graduation-cap" class="mt-0.5 h-5 w-5 text-nebula-bright"></i>
+                            <div>
+                                <dt class="text-sm font-semibold text-nebula-light">Perfil ideal</dt>
+                                <dd class="text-celestial">Ensino Médio Técnico e interessados em aperfeiçoar pensamento
+                                    lógico</dd>
+                            </div>
+                        </div>
+                    </dl>
+                    <p class="mt-6 text-center text-sm text-celestial/75">
+                        Inscrições em ordem de chegada.</p>
+                    <p class="mt-6 text-center text-sm font-semibold text-nebula-bright">Não deixe para depois.
+                    </p>
+                </aside>
+            </div>
+            <div class="mt-8 flex flex-col gap-3 sm:flex--1 sm:items-center">
+                <a href="https://enquetes.ifsp.edu.br/189973?lang=pt-BR" target="_blank" rel="noopener noreferrer"
+                    class="group cta-glow inline-flex w-full items-center justify-center gap-3 rounded-2xl px-8 py-8 text-base font-extrabold text-celestial sm:w-[340px] sm:text-lg lg:w-[380px]"
+                    aria-label="Garantir Minha Vaga no curso">
+                    Garantir Minha Vaga
+                    <i data-lucide="rocket" class="h-5 w-5 transition group-hover:translate-x-0.5"></i>
+                </a>
+            </div>
+
         </div>
-      </div>
     </header>
 
     <main class="mx-auto max-w-7xl space-y-16 px-4 pb-20 sm:px-6 lg:space-y-20 lg:px-8">
-      <section class="reveal glass-cosmic rounded-3xl p-6 lg:p-8 glow-nebula" id="objetivos">
-        <div class="mb-8 flex items-center gap-3">
-          <i data-lucide="target" class="h-6 w-6 text-nebula-bright"></i>
-          <h2 class="text-2xl font-extrabold text-celestial sm:text-3xl">O que você vai aprender</h2>
-        </div>
+        <section class="reveal glass-cosmic rounded-3xl p-6 lg:p-8 glow-nebula" id="objetivos">
+            <div class="mb-8 flex items-center gap-3">
+                <i data-lucide="target" class="h-6 w-6 text-nebula-bright"></i>
+                <h2 class="text-2xl font-extrabold text-celestial sm:text-3xl">Veja aqui o que você vai aprender</h2>
+            </div>
 
-        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-          <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
-            <i data-lucide="brain" class="h-5 w-5 text-nebula-bright"></i>
-            <p class="mt-3 font-semibold text-celestial">1. Desenvolver fundamentos de lógica de programação</p>
-          </article>
-          <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
-            <i data-lucide="search-code" class="h-5 w-5 text-nebula-bright"></i>
-            <p class="mt-3 font-semibold text-celestial">2. Construir algoritmos a partir da análise de problemas</p>
-          </article>
-          <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
-            <i data-lucide="file-code-2" class="h-5 w-5 text-nebula-bright"></i>
-            <p class="mt-3 font-semibold text-celestial">3. Formalizar soluções em pseudocódigo estruturado</p>
-          </article>
-          <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
-            <i data-lucide="variable" class="h-5 w-5 text-nebula-bright"></i>
-            <p class="mt-3 font-semibold text-celestial">4. Compreender variáveis, tipos de dados e operações</p>
-          </article>
-          <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
-            <i data-lucide="git-branch-plus" class="h-5 w-5 text-nebula-bright"></i>
-            <p class="mt-3 font-semibold text-celestial">5. Aplicar estruturas condicionais na tomada de decisão</p>
-          </article>
-          <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
-            <i data-lucide="repeat" class="h-5 w-5 text-nebula-bright"></i>
-            <p class="mt-3 font-semibold text-celestial">6. Utilizar estruturas de repetição adequadas conforme o problema</p>
-          </article>
-          <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
-            <i data-lucide="rows-3" class="h-5 w-5 text-nebula-bright"></i>
-            <p class="mt-3 font-semibold text-celestial">7. Trabalhar com vetores na organização de dados</p>
-          </article>
-          <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
-            <i data-lucide="clipboard-check" class="h-5 w-5 text-nebula-bright"></i>
-            <p class="mt-3 font-semibold text-celestial">8. Realizar análise de execução (teste de mesa)</p>
-          </article>
-          <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
-            <i data-lucide="bug" class="h-5 w-5 text-nebula-bright"></i>
-            <p class="mt-3 font-semibold text-celestial">9. Identificar e corrigir inconsistências lógicas por meio de depuração</p>
-          </article>
-          <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
-            <i data-lucide="workflow" class="h-5 w-5 text-nebula-bright"></i>
-            <p class="mt-3 font-semibold text-celestial">10. Representar algoritmos por meio de fluxogramas</p>
-          </article>
-          <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30 sm:col-span-2 xl:col-span-1">
-            <i data-lucide="puzzle" class="h-5 w-5 text-nebula-bright"></i>
-            <p class="mt-3 font-semibold text-celestial">11. Aplicar modularização por meio de funções</p>
-          </article>
-        </div>
-      </section>
+            <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
+                    <i data-lucide="brain" class="h-5 w-5 text-nebula-bright"></i>
+                    <p class="mt-3 font-semibold text-celestial">1. Desenvolver fundamentos de lógica de programação</p>
+                </article>
+                <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
+                    <i data-lucide="search-code" class="h-5 w-5 text-nebula-bright"></i>
+                    <p class="mt-3 font-semibold text-celestial">2. Construir algoritmos a partir da análise de
+                        problemas</p>
+                </article>
+                <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
+                    <i data-lucide="file-code-2" class="h-5 w-5 text-nebula-bright"></i>
+                    <p class="mt-3 font-semibold text-celestial">3. Formalizar soluções em pseudocódigo estruturado</p>
+                </article>
+                <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
+                    <i data-lucide="variable" class="h-5 w-5 text-nebula-bright"></i>
+                    <p class="mt-3 font-semibold text-celestial">4. Compreender variáveis, tipos de dados e operações
+                    </p>
+                </article>
+                <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
+                    <i data-lucide="git-branch-plus" class="h-5 w-5 text-nebula-bright"></i>
+                    <p class="mt-3 font-semibold text-celestial">5. Aplicar estruturas condicionais na tomada de decisão
+                    </p>
+                </article>
+                <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
+                    <i data-lucide="repeat" class="h-5 w-5 text-nebula-bright"></i>
+                    <p class="mt-3 font-semibold text-celestial">6. Utilizar estruturas de repetição adequadas conforme
+                        o problema</p>
+                </article>
+                <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
+                    <i data-lucide="rows-3" class="h-5 w-5 text-nebula-bright"></i>
+                    <p class="mt-3 font-semibold text-celestial">7. Trabalhar com vetores na organização de dados</p>
+                </article>
+                <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
+                    <i data-lucide="clipboard-check" class="h-5 w-5 text-nebula-bright"></i>
+                    <p class="mt-3 font-semibold text-celestial">8. Realizar análise de execução (teste de mesa)</p>
+                </article>
+                <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
+                    <i data-lucide="bug" class="h-5 w-5 text-nebula-bright"></i>
+                    <p class="mt-3 font-semibold text-celestial">9. Identificar e corrigir inconsistências lógicas por
+                        meio de depuração</p>
+                </article>
+                <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30">
+                    <i data-lucide="workflow" class="h-5 w-5 text-nebula-bright"></i>
+                    <p class="mt-3 font-semibold text-celestial">10. Representar algoritmos por meio de fluxogramas</p>
+                </article>
+                <article class="glass-cosmic rounded-2xl p-4 border-nebula-light/30 sm:col-span-2 xl:col-span-1">
+                    <i data-lucide="puzzle" class="h-5 w-5 text-nebula-bright"></i>
+                    <p class="mt-3 font-semibold text-celestial">11. Aplicar modularização por meio de funções</p>
+                </article>
+            </div>
+        </section>
 
-      <section class="reveal grid gap-6 lg:grid-cols-2" id="publico">
-        <article class="glass-cosmic rounded-3xl p-6 lg:p-8 border-nebula-light/40 glow-nebula">
-          <div class="mb-4 inline-flex items-center gap-2 rounded-full bg-nebula-bright/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-nebula-light">
-            <i data-lucide="users" class="h-4 w-4"></i>
-            Para Quem é o Curso
-          </div>
-          <p class="text-lg leading-relaxed text-celestial">
-            Se você está no <strong>Ensino Médio, técnico ou no início da graduação</strong> e quer dominar a lógica de programação antes de mergulhar em linguagens de código, este é o seu curso. Perfeito para quem deseja construir bases sólidas de raciocínio lógico e algoritmo.
-          </p>
-        </article>
+        <section class="reveal grid gap-6 lg:grid-cols-2" id="publico">
+            <article class="glass-cosmic rounded-3xl p-6 lg:p-8 border-nebula-light/40 glow-nebula">
+                <div
+                    class="mb-4 inline-flex items-center gap-2 rounded-full bg-nebula-bright/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-nebula-light">
+                    <i data-lucide="users" class="h-4 w-4"></i>
+                    Para Quem é o Curso
+                </div>
+                <p class="text-lg leading-relaxed text-celestial">
+                    Se você está no <strong>Ensino Médio, técnico ou no início da graduação</strong> e quer dominar a
+                    lógica de programação ou aperfeiçoar seus conhecimentos em lógica de programação, este é o seu curso. Perfeito para
+                    quem deseja construir bases sólidas de raciocínio lógico e algoritmo.
+                </p>
+            </article>
 
-        <article class="glass-cosmic rounded-3xl p-6 lg:p-8 border-nebula-bright/40">
-          <div class="mb-4 inline-flex items-center gap-2 rounded-full bg-nebula-bright/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-nebula-light">
-            <i data-lucide="shield-check" class="h-4 w-4"></i>
-            Pré-requisitos
-          </div>
-          <p class="text-lg leading-relaxed text-celestial">
-            <strong>Nenhuma experiência em programação necessária!</strong> Apenas conhecimentos básicos de informática e Ensino Médio concluído ou cursando. Quanto menos você sabe de programação, mais ganhará com este curso.
-          </p>
-        </article>
-      </section>
+            <article class="glass-cosmic rounded-3xl p-6 lg:p-8 border-nebula-bright/40">
+                <div
+                    class="mb-4 inline-flex items-center gap-2 rounded-full bg-nebula-bright/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-nebula-light">
+                    <i data-lucide="shield-check" class="h-4 w-4"></i>
+                    Pré-requisitos
+                </div>
+                <p class="text-lg leading-relaxed text-celestial">
+                    <strong>Nenhuma experiência em programação necessária!</strong> Apenas conhecimentos básicos de
+                    informática e Ensino Médio concluído ou cursando e muita, mas muita vontade de aprender! Aqui quanto menos você sabe de programação, mais
+                    ganhará com este curso.
+                </p>
+            </article>
+        </section>
 
-      <section class="reveal glass-cosmic rounded-3xl p-6 lg:p-8 glow-nebula" id="cronograma">
-        <div class="mb-6 flex items-center gap-3">
-          <i data-lucide="calendar-clock" class="h-6 w-6 text-nebula-bright"></i>
-          <h2 class="text-2xl font-extrabold text-celestial sm:text-3xl">Informações Importantes</h2>
-        </div>
+        <section class="reveal glass-cosmic rounded-3xl p-6 lg:p-8 glow-nebula" id="cronograma">
+            <div class="mb-6 flex items-center gap-3">
+                <i data-lucide="calendar-clock" class="h-6 w-6 text-nebula-bright"></i>
+                <h2 class="text-2xl font-extrabold text-celestial sm:text-3xl">Informações Importantes</h2>
+            </div>
 
-        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          <article class="rounded-2xl border border-nebula-light/25 bg-cosmic-800/40 p-4">
-            <p class="text-sm font-semibold uppercase tracking-wider text-nebula-light">Início previsto</p>
-            <p class="mt-2 text-lg font-bold text-celestial">25/05/2026</p>
-          </article>
-          <article class="rounded-2xl border border-nebula-light/25 bg-cosmic-800/40 p-4">
-            <p class="text-sm font-semibold uppercase tracking-wider text-nebula-light">Dia e horário</p>
-            <p class="mt-2 text-lg font-bold text-celestial">Segundas, 14h00 às 18h00</p>
-          </article>
-          <article class="rounded-2xl border border-nebula-light/25 bg-cosmic-800/40 p-4">
-            <p class="text-sm font-semibold uppercase tracking-wider text-nebula-light">Formato e local</p>
-            <p class="mt-2 text-lg font-bold text-celestial">Laboratório B116</p>
-          </article>
-          <article class="rounded-2xl border border-nebula-bright/50 bg-nebula-bright/10 p-4">
-            <p class="text-sm font-semibold uppercase tracking-wider text-nebula-bright">Vagas</p>
-            <p class="mt-2 text-lg font-extrabold text-nebula-bright">Apenas 30 vagas</p>
-            <p class="text-sm text-nebula-light">Seleção por ordem de inscrição</p>
-          </article>
-          <article class="rounded-2xl border border-emerald-400/40 bg-emerald-400/10 p-4">
-            <p class="text-sm font-semibold uppercase tracking-wider text-emerald-300">Custo</p>
-            <p class="mt-2 text-lg font-extrabold text-emerald-300">Curso Gratuito</p>
-          </article>
-          <article class="rounded-2xl border border-nebula-light/25 bg-cosmic-800/40 p-4">
-            <p class="text-sm font-semibold uppercase tracking-wider text-nebula-light">Frequência</p>
-            <p class="mt-2 text-lg font-bold text-celestial">Presença Mínima 75%</p>
-          </article>
-          <article class="rounded-2xl border border-nebula-light/25 bg-cosmic-800/40 p-4">
-            <p class="text-sm font-semibold uppercase tracking-wider text-nebula-light">Avaliação</p>
-            <p class="mt-2 text-lg font-bold text-celestial">Sem Provas</p>
-          </article>
-        </div>
+            <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                <article class="rounded-2xl border border-nebula-light/25 bg-cosmic-800/40 p-4">
+                    <p class="text-sm font-semibold uppercase tracking-wider text-nebula-light">Início previsto</p>
+                    <p class="mt-2 text-lg font-bold text-celestial">25/05/2026</p>
+                </article>
+                <article class="rounded-2xl border border-nebula-light/25 bg-cosmic-800/40 p-4">
+                    <p class="text-sm font-semibold uppercase tracking-wider text-nebula-light">Dia e horário</p>
+                    <p class="mt-2 text-lg font-bold text-celestial">Segundas, 14h00 às 18h00</p>
+                </article>
+                <article class="rounded-2xl border border-nebula-light/25 bg-cosmic-800/40 p-4">
+                    <p class="text-sm font-semibold uppercase tracking-wider text-nebula-light">Formato e local</p>
+                    <p class="mt-2 text-lg font-bold text-celestial">Laboratório B116</p>
+                </article>
+                <article class="rounded-2xl border border-nebula-light/25 bg-cosmic-800/40 p-4">
+                    <p class="text-sm font-semibold uppercase tracking-wider text-nebula-bright">Vagas</p>
+                    <p class="mt-2 text-lg font-extrabold text-nebula-bright">Apenas 30 vagas</p>
+                    <p class="text-sm text-nebula-light">Seleção por ordem de inscrição</p>
+                </article>
+                <article class="rounded-2xl border border-nebula-light/25 bg-cosmic-800/40 p-4">
+                    <p class="text-sm font-semibold uppercase tracking-wider text-nebula-light">Frequência</p>
+                    <p class="mt-2 text-lg font-bold text-celestial">Presença Mínima 75%</p>
+                </article>
+                <article class="rounded-2xl border border-nebula-light/25 bg-cosmic-800/40 p-4">
+                    <p class="text-sm font-semibold uppercase tracking-wider text-nebula-light">Avaliação</p>
+                    <p class="mt-2 text-lg font-bold text-celestial">Sem Provas</p>
+                </article>
+            </div>
 
-        <div class="mt-8">
-          <a
-            href="https://enquetes.ifsp.edu.br/189973?lang=pt-BR"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 rounded-xl border border-nebula-bright/60 bg-nebula-bright/15 px-5 py-3 font-bold text-nebula-bright transition hover:bg-nebula-bright/25 hover:border-nebula-bright"
-          >
-            Quero me inscrever agora
-            <i data-lucide="arrow-right" class="h-5 w-5"></i>
-          </a>
-        </div>
-      </section>
+            <div class="mt-8 flex flex-col gap-3 sm:flex--1 sm:items-center">
+                <a href="https://enquetes.ifsp.edu.br/189973?lang=pt-BR" target="_blank" rel="noopener noreferrer"
+                    class="group cta-glow inline-flex w-full items-center justify-center gap-3 rounded-2xl px-8 py-8 text-base font-extrabold text-celestial sm:w-[340px] sm:text-lg lg:w-[380px]"
+                    aria-label="Garantir Minha Vaga no curso">
+                    Garantir Minha Vaga
+                    <i data-lucide="rocket" class="h-5 w-5 transition group-hover:translate-x-0.5"></i>
+                </a>
+            </div>
+        </section>
     </main>
 
     <footer class="border-t border-nebula-bright/20 bg-cosmic-900/60">
-      <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 text-sm text-celestial/75 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-        <p>© 2026 Curso Lógica de Programação e Construção de Algoritmos • IFSP</p>
-        <a
-          href="https://enquetes.ifsp.edu.br/189973?lang=pt-BR"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 font-semibold text-nebula-light transition hover:text-nebula-bright"
-        >
-          Link de inscrição
-          <i data-lucide="external-link" class="h-4 w-4"></i>
-        </a>
-      </div>
+        <div
+            class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 text-sm text-celestial/75 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+            <p>  Desenvolvido com VS Code & Copilot Pro © 2026 • Curso Lógica de Programação e Construção de Algoritmos • IFSP</p>
+            <a href="https://enquetes.ifsp.edu.br/189973?lang=pt-BR" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 font-semibold text-nebula-light transition hover:text-nebula-bright">
+                Link de inscrição
+                <i data-lucide="external-link" class="h-4 w-4"></i>
+            </a>
+        </div>
     </footer>
 
     <script>
-      lucide.createIcons();
+        lucide.createIcons();
 
-      const revealNodes = document.querySelectorAll('.reveal');
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('show');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.15 }
-      );
+        const revealNodes = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.15 }
+        );
 
-      revealNodes.forEach((node, index) => {
-        node.style.transitionDelay = `${Math.min(index * 80, 260)}ms`;
-        observer.observe(node);
-      });
+        revealNodes.forEach((node, index) => {
+            node.style.transitionDelay = `${Math.min(index * 80, 260)}ms`;
+            observer.observe(node);
+        });
     </script>
-  </body>
+</body>
+
 </html>
